@@ -31,8 +31,6 @@ resource"azurerm_key_vault" "keyvault_oracle" {
 resource "random_string" "random_passwd" {
   length                       = "14"
   special                      = "true"
-  override_special             = "/@$_"
-}
 }
 # Create the secret for user
 resource "azurerm_key_vault_secret" "user_secret" {
@@ -42,7 +40,7 @@ resource "azurerm_key_vault_secret" "user_secret" {
 }
 # Create the secret for password
 resource "azurerm_key_vault_secret" "pass_secret" {
-  name                         = var.passwordsecret_name"
+  name                         = var.passwordsecret_name
   value                        = random_string.random_passwd.result
   key_vault_id                 = azurerm_key_vault.rg_oracle.id
 }
