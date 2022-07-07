@@ -2,6 +2,8 @@ data "azurerm_resource_group" "rg_oracle" {
   name = var.resource_group_name
 }
 
+data azurerm_client_config current {}
+
 resource"azurerm_key_vault" "keyvault_oracle" {
   name                = var.name_keyvault
   location            = var.location
